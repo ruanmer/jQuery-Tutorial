@@ -50,7 +50,10 @@ $.fn.tutorial = function( options )
         width:              320,
         opacity:            0.4,
         bounce:             false,
-        returnTop:          true
+        returnTop:          true,
+        nextText:           'Next',
+        prevText:           'Prev',
+        doneText:           'Done!'
     }, options );
     
     options.bounce = false;
@@ -111,7 +114,7 @@ $.fn.tutorial = function( options )
     
     // create the cancel button and the finished button
     //
-    this.append( '<a id="' + id + '-done" class="tutorial-button" href="javascript:void(0);">Done!</a>' );
+    this.append( '<a id="' + id + '-done" class="tutorial-button" href="javascript:void(0);">'+ options.doneText +'</a>' );
     
     $( '#' + id + '-done' ).click( function() {
         $('#' + id).tutorialCancel(); 
@@ -126,8 +129,8 @@ $.fn.tutorial = function( options )
     // create the next/prev buttons if count is more than 1
     //
     if ( this.data( 'count' ) > 1 ) {
-        this.append( '<a id="' + id + '-next" class="tutorial-button" type="button" href="javascript:void(0);">Next</a>' );
-        this.append( '<a id="' + id + '-prev" class="tutorial-button" type="button" href="javascript:void(0);">Prev</a>' );
+        this.append( '<a id="' + id + '-next" class="tutorial-button" type="button" href="javascript:void(0);">'+ options.nextText +'</a>' );
+        this.append( '<a id="' + id + '-prev" class="tutorial-button" type="button" href="javascript:void(0);">'+ options.prevText +'</a>' );
     
         $( '#' + id + '-prev' ).click( function() {
             $('#' + id).tutorialPrev();
